@@ -54,7 +54,7 @@ class AssociationResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
+                Tables\Columns\TextColumn::make('phone')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('city.name')
                     ->numeric()
@@ -89,6 +89,7 @@ class AssociationResource extends Resource
     {
         return [
             'index' => Pages\ManageAssociations::route('/'),
+            'view' => Pages\ViewAssociation::route('/{record}'),
         ];
     }
 }
