@@ -12,12 +12,16 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Resources\Pages\Page;
+use Filament\Pages\SubNavigationPosition;
 
 class AssociationResource extends Resource
 {
     protected static ?string $model = Association::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     public static function form(Form $form): Form
     {
@@ -89,7 +93,22 @@ class AssociationResource extends Resource
     {
         return [
             'index' => Pages\ManageAssociations::route('/'),
-            'view' => Pages\ViewAssociation::route('/{record}'),
+            'create' => Pages\CreateAssociation::route('/create'),
+            'edit' => Pages\EditAssociation::route('/{record}/edit'),
+            'units' => Pages\ManageAssociationUnits::route('/{record}/units'),
         ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [];
+    }
+
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationItems([
+            Pages\EditAssociation::class,
+            Pages\ManageAssociationUnits::class,
+        ]);
     }
 }

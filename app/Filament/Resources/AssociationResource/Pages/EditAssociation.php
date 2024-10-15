@@ -3,10 +3,9 @@
 namespace App\Filament\Resources\AssociationResource\Pages;
 
 use App\Filament\Resources\AssociationResource;
-use Filament\Actions;
-use Filament\Resources\Pages\ViewRecord;
+use Filament\Resources\Pages\EditRecord;
 
-class ViewAssociation extends ViewRecord
+class EditAssociation extends EditRecord
 {
     protected static string $resource = AssociationResource::class;
 }

@@ -11,6 +11,13 @@ class Association extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'address',
+        'city_id',
+        'region_id',
+    ];
+
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
