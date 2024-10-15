@@ -45,4 +45,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function associations()
+    {
+        return $this->belongsToMany(Association::class)->withPivot('role_id')->withTimestamps();
+    }
+
+    public function isAdmin()
+    {
+        return $this->associations()->wherePivot('role_id', config('constants.ROLE_ADMIN'))->exists();
+    }
+
+    public function isChairman($associationId)
+    {
+        return $this->associations()->wherePivot('role_id', config('constants.ROLE_CHAIRMAN'))
+            ->where('association_id', $associationId)->exists();
+    }
 }

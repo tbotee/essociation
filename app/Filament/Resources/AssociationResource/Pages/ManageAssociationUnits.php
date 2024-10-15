@@ -16,15 +16,6 @@ class ManageAssociationUnits extends ManageRelatedRecords
 
     protected static string $relationship = 'units';
 
-    public function getTitle(): string | Htmlable
-    {
-        $recordTitle = $this->getRecordTitle();
-
-        $recordTitle = $recordTitle instanceof Htmlable ? $recordTitle->toHtml() : $recordTitle;
-
-        return "Manage {$recordTitle} Comments";
-    }
-
     public function getBreadcrumb(): string
     {
         return 'Units';
@@ -82,14 +73,4 @@ class ManageAssociationUnits extends ManageRelatedRecords
                 ]),
             ]);
     }
-
-//    public static function getPages(): array
-//    {
-//        return [
-//            'index' => Units\ManageUnits::route('/'),
-//            'create' => Units\CreateUnit::route('/create'),
-////            'edit' => Units\EditAssociation::route('/{record}/edit'),
-////            'comments' => Units\ManageAssociationUnits::route('/{record}/units'),
-//        ];
-//    }
 }
