@@ -93,20 +93,13 @@ class ManageAssociationCosts extends ManageRelatedRecords
                         return __($index);
                     }),
             ])
-            ->filters([
-                //
-            ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                    ->mutateFormDataUsing(function(array $data): array {
-                        return $this->manageSave($data);
-                    })
+                    ->mutateFormDataUsing(fn (array $data): array => $this->manageSave($data)),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                    ->mutateFormDataUsing(function(array $data): array {
-                        return $this->manageSave($data);
-                    }),
+                    ->mutateFormDataUsing(fn (array $data): array => $this->manageSave($data)),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
