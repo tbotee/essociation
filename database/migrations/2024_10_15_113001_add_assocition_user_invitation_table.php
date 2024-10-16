@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('association_user_invitation', function (Blueprint $table) {
+        Schema::create('association_user_invitations', function (Blueprint $table) {
             $table->id();
             $table->string('email');
             $table->foreignId('association_id')->constrained()->onDelete('restrict');
             $table->integer('role_id');
             $table->text('encrypted_data');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('association_user_invitation');
+        Schema::dropIfExists('association_user_invitations');
     }
 };

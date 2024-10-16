@@ -1,7 +1,15 @@
 <?php
 
 return [
-    'ROLE_ADMIN' => 1,
-    'ROLE_CHAIRMAN' => 2,
-    'ROLE_SUER_ADMIN' => 3,
+    'roles' => [
+        'admin' => 1,
+        'chairman' => 2,
+        'superAdmin' => 3,
+    ],
+    'invitationStatus' => [
+        'pending' => 0,
+        'accepted' => 1,
+        'rejected' => 2
+    ]
+
 ];

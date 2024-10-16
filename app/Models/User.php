@@ -53,12 +53,12 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->associations()->wherePivot('role_id', config('constants.ROLE_ADMIN'))->exists();
+        return $this->associations()->wherePivot('role_id', config('constants.roles.admin'))->exists();
     }
 
     public function isChairman($associationId)
     {
-        return $this->associations()->wherePivot('role_id', config('constants.ROLE_CHAIRMAN'))
+        return $this->associations()->wherePivot('role_id', config('constants.roles.chairman'))
             ->where('association_id', $associationId)->exists();
     }
 }

@@ -38,4 +38,9 @@ class Association extends Model
     {
         return $this->belongsToMany(User::class)->withPivot('role_id')->withTimestamps();
     }
+
+    public function userInvitation(): HasMany
+    {
+        return $this->hasMany(AssociationUserInvitation::class);
+    }
 }

@@ -4,7 +4,6 @@ namespace App\Filament\Resources\AssociationResource\Pages;
 
 use App\Filament\Resources\AssociationResource;
 use Filament\Resources\Pages\ManageRelatedRecords;
-use Illuminate\Contracts\Support\Htmlable;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Tables;
@@ -15,6 +14,7 @@ class ManageAssociationUnits extends ManageRelatedRecords
     protected static string $resource = AssociationResource::class;
 
     protected static string $relationship = 'units';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
     public function getBreadcrumb(): string
     {

@@ -5,15 +5,15 @@ namespace App\Filament\Resources\AssociationResource\Pages;
 use App\Filament\Resources\AssociationResource;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Table;
-use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Tables;
 
-class ManageAssociationUsers extends ManageRelatedRecords
+class AssociationUsers extends ManageRelatedRecords
 {
     protected static string $resource = AssociationResource::class;
 
     protected static string $relationship = 'users';
+
+    protected static ?string $navigationIcon = 'heroicon-m-users';
 
     public function getBreadcrumb(): string
     {
@@ -22,7 +22,7 @@ class ManageAssociationUsers extends ManageRelatedRecords
 
     public static function getNavigationLabel(): string
     {
-        return 'Manage Users';
+        return 'Users';
     }
 
     public function table(Table $table): Table
@@ -34,14 +34,14 @@ class ManageAssociationUsers extends ManageRelatedRecords
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('pivot.role_id')
                     ->formatStateUsing(function ($state) {
-                        return $state == config('constants.ROLE_ADMIN') ? 'Admin' : 'Chairman';
+                        return $state == config('constants.roles.admin') ? 'Admin' : 'Chairman';
                     }),
             ])
             ->filters([
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                //Tables\Actions\CreateAction::make(),
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),

@@ -96,7 +96,9 @@ class AssociationResource extends Resource
             'create' => Pages\CreateAssociation::route('/create'),
             'edit' => Pages\EditAssociation::route('/{record}/edit'),
             'units' => Pages\ManageAssociationUnits::route('/{record}/units'),
-            'users' => Pages\ManageAssociationUsers::route('/{record}/users'),
+            'users' => Pages\AssociationUsers::route('/{record}/users'),
+            'invite_users' => Pages\InviteAssociationUsers::route('/{record}/invite-users'),
+
         ];
     }
 
@@ -110,7 +112,8 @@ class AssociationResource extends Resource
         return $page->generateNavigationItems([
             Pages\EditAssociation::class,
             Pages\ManageAssociationUnits::class,
-            Pages\ManageAssociationUsers::class,
+            Pages\AssociationUsers::class,
+            Pages\InviteAssociationUsers::class,
         ]);
     }
 }
