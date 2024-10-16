@@ -34,9 +34,9 @@ class Association extends Model
         return $this->hasMany(Unit::class);
     }
 
-    public function users(): BelongsToMany
+    public function associationUsers(): HasMany
     {
-        return $this->belongsToMany(User::class)->withPivot('role_id')->withTimestamps();
+        return $this->hasMany(AssociationUser::class);
     }
 
     public function userInvitation(): HasMany
@@ -48,4 +48,5 @@ class Association extends Model
     {
         return $this->hasMany(AssociationCost::class);
     }
+
 }

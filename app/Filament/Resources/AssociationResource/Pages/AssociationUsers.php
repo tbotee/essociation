@@ -11,7 +11,7 @@ class AssociationUsers extends ManageRelatedRecords
 {
     protected static string $resource = AssociationResource::class;
 
-    protected static string $relationship = 'users';
+    protected static string $relationship = 'associationUsers';
 
     protected static ?string $navigationIcon = 'heroicon-m-users';
 
@@ -30,9 +30,9 @@ class AssociationUsers extends ManageRelatedRecords
         return $table
             ->recordTitleAttribute('name')
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('pivot.role_id')
+                Tables\Columns\TextColumn::make('user.name'),
+                Tables\Columns\TextColumn::make('user.email'),
+                Tables\Columns\TextColumn::make('role_id')
                     ->formatStateUsing(function ($state) {
                         return $state == config('constants.roles.admin') ? 'Admin' : 'Chairman';
                     }),

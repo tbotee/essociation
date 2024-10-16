@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('association_user', function (Blueprint $table) {
+        Schema::create('association_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('restrict');
             $table->foreignId('association_id')->constrained()->onDelete('restrict');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('association_user');
+        Schema::dropIfExists('association_users');
     }
 };
