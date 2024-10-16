@@ -10,6 +10,12 @@ return [
         'pending' => 0,
         'accepted' => 1,
         'rejected' => 2
+    ],
+    'associationCosts' => [
+        'water' => 1,
+        'wasteWater' => 2,
+        'divideAcrossUnits' => 3,
+        'divideAcrossApartments' => 4,
+        'divideAcrossApartmentResidents' => 5,
     ]
-
 ];

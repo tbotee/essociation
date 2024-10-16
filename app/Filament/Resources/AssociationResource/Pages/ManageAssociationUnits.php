@@ -14,6 +14,7 @@ class ManageAssociationUnits extends ManageRelatedRecords
     protected static string $resource = AssociationResource::class;
 
     protected static string $relationship = 'units';
+
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
     public function getBreadcrumb(): string

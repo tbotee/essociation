@@ -43,4 +43,9 @@ class Association extends Model
     {
         return $this->hasMany(AssociationUserInvitation::class);
     }
+
+    public function costs(): HasMany
+    {
+        return $this->hasMany(AssociationCost::class);
+    }
 }

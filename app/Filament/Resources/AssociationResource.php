@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AssociationResource\Pages;
-use App\Filament\Resources\AssociationResource\RelationManagers;
 use App\Models\Association;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Resources\Pages\Page;
 use Filament\Pages\SubNavigationPosition;
 
@@ -98,7 +95,7 @@ class AssociationResource extends Resource
             'units' => Pages\ManageAssociationUnits::route('/{record}/units'),
             'users' => Pages\AssociationUsers::route('/{record}/users'),
             'invite_users' => Pages\InviteAssociationUsers::route('/{record}/invite-users'),
-
+            'costs' => Pages\ManageAssociationCosts::route('/{record}/costs'),
         ];
     }
 
@@ -112,6 +109,7 @@ class AssociationResource extends Resource
         return $page->generateNavigationItems([
             Pages\EditAssociation::class,
             Pages\ManageAssociationUnits::class,
+            Pages\ManageAssociationCosts::class,
             Pages\AssociationUsers::class,
             Pages\InviteAssociationUsers::class,
         ]);
