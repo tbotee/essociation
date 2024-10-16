@@ -9,9 +9,7 @@ use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Table;
 use Filament\Forms;
 use Filament\Tables;
-use Closure;
 use Filament\Forms\Get;
-use Illuminate\Support\Facades\Crypt;
 
 class ManageAssociationCosts extends ManageRelatedRecords
 {
@@ -81,7 +79,8 @@ class ManageAssociationCosts extends ManageRelatedRecords
                     ->boolean()
                     ->trueIcon('heroicon-o-check-circle')
                     ->trueColor('info')
-                    ->falseIcon(''),
+                    ->falseIcon('')
+                    ->alignCenter(),
                 Tables\Columns\TextColumn::make('date')
                     ->label(__('date'))
                     ->formatStateUsing(function (Carbon $state) {
@@ -99,17 +98,15 @@ class ManageAssociationCosts extends ManageRelatedRecords
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                    ->mutateFormDataUsing(function (array $data): array {
-                        $association = $this->getRelationship()->getParent();
-                        $data['association_id'] = $association->id;
-                        if (!empty($data['date'])) {
-                            $data['date'] = Carbon::createFromFormat('d/m/Y', $data['date']);//->format('Y-m-d');
-                        }
-                        return $data;
-                    }),
+                    ->mutateFormDataUsing(function(array $data): array {
+                        return $this->manageSave($data);
+                    })
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->mutateFormDataUsing(function(array $data): array {
+                        return $this->manageSave($data);
+                    }),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
@@ -119,4 +116,12 @@ class ManageAssociationCosts extends ManageRelatedRecords
             ]);
     }
 
+    private function manageSave(array $data): array {
+        $association = $this->getRelationship()->getParent();
+        $data['association_id'] = $association->id;
+        if (!empty($data['date'])) {
+            $data['date'] = Carbon::createFromFormat('d/m/Y', $data['date']);
+        }
+        return $data;
+    }
 }

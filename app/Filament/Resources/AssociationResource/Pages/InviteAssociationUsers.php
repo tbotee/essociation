@@ -97,7 +97,6 @@ class InviteAssociationUsers extends ManageRelatedRecords
                         config('constants.roles.admin') => __('admin'),
                         config('constants.roles.chairman') => __('chairman')
                     ])
-                ->inline()
             ]);
     }
 }
