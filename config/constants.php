@@ -17,5 +17,9 @@ return [
         'divideAcrossUnits' => 3,
         'divideAcrossApartments' => 4,
         'divideAcrossApartmentResidents' => 5,
-    ]
+    ],
+    'readOnlyEaterMeterTypes' => [
+        'associationMeter' => 'association-meter',
+        'unitMeter' => 'unit-meter'
+    ],
 ];

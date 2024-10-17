@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UnitResource\Pages;
+use App\Models\WaterMeterType;
 use Filament\Support\Enums\MaxWidth;
 use App\Models\Unit;
 use Filament\Forms;
@@ -40,6 +41,19 @@ class UnitResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('stairwell')
                     ->maxLength(255),
+//                Forms\Components\Select::make('water_meter_id')
+//                    ->relationship('waterMeter', 'water_meter_type_id')
+//                    ->options(
+//                        WaterMeterType::where(
+//                            'slug', config('constants.readOnlyEaterMeterTypes.associationMeter')
+//                        )
+//                            ->select('id', 'name')
+//                            ->get()
+//                            ->pluck('name', 'id')
+//                            ->mapWithKeys(function ($item, $key) {
+//                                return [$key => __($item)];
+//                            })
+//                    )
             ]);
     }
 
@@ -62,6 +76,8 @@ class UnitResource extends Resource
                 Tables\Columns\TextColumn::make('block')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('stairwell')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('waterMeter.waterMeterType.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
