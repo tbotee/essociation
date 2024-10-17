@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\AssociationResource\Pages;
 
 use App\Filament\Resources\AssociationResource;
+use App\Traits\PageFullWidth;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,6 +12,8 @@ use Filament\Tables\Table;
 
 class ManageAssociationUnits extends ManageRelatedRecords
 {
+    use PageFullWidth;
+
     protected static string $resource = AssociationResource::class;
 
     protected static string $relationship = 'units';

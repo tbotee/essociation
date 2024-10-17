@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UnitResource\Pages;
-use App\Filament\Resources\UnitResource\RelationManagers;
+use Filament\Support\Enums\MaxWidth;
 use App\Models\Unit;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,8 +11,6 @@ use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UnitResource extends Resource
 {
@@ -54,6 +52,9 @@ class UnitResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('association.name'),
+                Tables\Columns\TextColumn::make('association.city.name'),
+                Tables\Columns\TextColumn::make('association.region.name'),
                 Tables\Columns\TextColumn::make('street')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('number')

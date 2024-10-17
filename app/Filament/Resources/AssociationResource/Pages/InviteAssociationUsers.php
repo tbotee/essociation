@@ -4,6 +4,7 @@ namespace App\Filament\Resources\AssociationResource\Pages;
 
 use App\Filament\Resources\AssociationResource;
 use App\Models\AssociationUserInvitation;
+use App\Traits\PageFullWidth;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Table;
@@ -14,6 +15,8 @@ use Closure;
 
 class InviteAssociationUsers extends ManageRelatedRecords
 {
+    use PageFullWidth;
+
     protected static string $resource = AssociationResource::class;
 
     protected static string $relationship = 'userInvitation';

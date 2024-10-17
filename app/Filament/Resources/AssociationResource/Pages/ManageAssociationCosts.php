@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\AssociationResource\Pages;
 
 use App\Filament\Resources\AssociationResource;
+use App\Traits\PageFullWidth;
 use Carbon\Carbon;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\ManageRelatedRecords;
@@ -13,6 +14,8 @@ use Filament\Forms\Get;
 
 class ManageAssociationCosts extends ManageRelatedRecords
 {
+    use PageFullWidth;
+
     protected static string $resource = AssociationResource::class;
 
     protected static string $relationship = 'costs';

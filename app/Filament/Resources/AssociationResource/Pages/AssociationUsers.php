@@ -3,12 +3,15 @@
 namespace App\Filament\Resources\AssociationResource\Pages;
 
 use App\Filament\Resources\AssociationResource;
+use App\Traits\PageFullWidth;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Table;
 use Filament\Tables;
 
 class AssociationUsers extends ManageRelatedRecords
 {
+    use PageFullWidth;
+
     protected static string $resource = AssociationResource::class;
 
     protected static string $relationship = 'associationUsers';
