@@ -44,7 +44,6 @@ class AssociationUsers extends ManageRelatedRecords
                 //
             ])
             ->headerActions([
-                //Tables\Actions\CreateAction::make(),
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),

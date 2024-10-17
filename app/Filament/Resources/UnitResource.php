@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UnitResource\Pages;
 use App\Models\WaterMeterType;
-use Filament\Support\Enums\MaxWidth;
 use App\Models\Unit;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,7 +11,7 @@ use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Notifications\Notification;
+use Filament\Resources\Pages\Page;
 
 class UnitResource extends Resource
 {
@@ -125,6 +124,15 @@ class UnitResource extends Resource
             'index' => Pages\ListUnits::route('/'),
             'create' => Pages\CreateUnit::route('/create'),
             'edit' => Pages\EditUnit::route('/{record}/edit'),
+            'residences' => Pages\ManageResidences::route('/{record}/residences'),
         ];
+    }
+
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationItems([
+            Pages\EditUnit::class,
+            Pages\ManageResidences::class,
+        ]);
     }
 }
