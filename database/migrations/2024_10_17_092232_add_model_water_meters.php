@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // id, code, amount, model_type, model_id(relation to model)
-        Schema::create('water_meter_types', function (Blueprint $table) {
+        Schema::create('water_meters', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug')->index()->nullable();
-            $table->smallInteger('order');
-            $table->boolean('read_only')->default(false);
+            $table->morphs('water_meter');
+            $table->string('code');
+            $table->unsignedBigInteger('water_meter_type_id');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('water_meter_types');
+        Schema::dropIfExists('water_meters');
     }
 };

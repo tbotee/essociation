@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Association extends Model
 {
@@ -49,4 +50,8 @@ class Association extends Model
         return $this->hasMany(AssociationCost::class);
     }
 
+    public function waterMeter(): MorphOne
+    {
+        return $this->morphOne(WaterMeter::class, 'water_meter');
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Unit extends Model
 {
@@ -25,5 +26,10 @@ class Unit extends Model
     public function residences(): HasMany
     {
         return $this->hasMany(Residence::class);
+    }
+
+    public function waterMeter(): MorphOne
+    {
+        return $this->morphOne(WaterMeter::class, 'water_meter');
     }
 }
