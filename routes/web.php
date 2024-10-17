@@ -16,12 +16,13 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::get('/test', function () {
-    $unit = \App\Models\Unit::find(3);
-    $unit->waterMeter()->create([
-        'water_meter_type_id' => 2,
-        'code' => 'alma',
-    ]);
-});
+//Route::get('/test', function () {
+//    $unit = \App\Models\Unit::find(3);
+////    $unit->waterMeter()->create([
+////        'water_meter_type_id' => 2,
+////        'code' => 'alma',
+////    ]);
+//    dd($unit->waterMeter->code);
+//});
 
 require __DIR__.'/auth.php';

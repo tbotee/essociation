@@ -12,6 +12,7 @@ use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Notifications\Notification;
 
 class UnitResource extends Resource
 {
@@ -41,19 +42,28 @@ class UnitResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('stairwell')
                     ->maxLength(255),
-//                Forms\Components\Select::make('water_meter_id')
-//                    ->relationship('waterMeter', 'water_meter_type_id')
-//                    ->options(
-//                        WaterMeterType::where(
-//                            'slug', config('constants.readOnlyEaterMeterTypes.associationMeter')
-//                        )
-//                            ->select('id', 'name')
-//                            ->get()
-//                            ->pluck('name', 'id')
-//                            ->mapWithKeys(function ($item, $key) {
-//                                return [$key => __($item)];
-//                            })
-//                    )
+                Forms\Components\Fieldset::make('Water Meter')
+                    ->relationship('waterMeter')
+                    ->schema([
+                        Forms\Components\TextInput::make('code'),
+                        Forms\Components\Select::make('water_meter_type_id')
+                            ->options(
+                                WaterMeterType::where(
+                                    'slug', config('constants.readOnlyEaterMeterTypes.associationMeter')
+                                )
+                                    ->select('id', 'name')
+                                    ->get()
+                                    ->pluck('name', 'id')
+                                    ->mapWithKeys(function ($item, $key) {
+                                        return [$key => __($item)];
+                                    })
+                            ),
+                        Forms\Components\Placeholder::make('delete_button')
+                            ->label('')
+                            ->content(function () {
+                                return view('filament.components.delete-button');
+                            }),
+                    ]),
             ]);
     }
 

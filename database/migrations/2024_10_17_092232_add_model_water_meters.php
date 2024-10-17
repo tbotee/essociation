@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('water_meters', function (Blueprint $table) {
             $table->id();
             $table->morphs('water_meter');
-            $table->string('code');
+            $table->string('code')->nullable();
             $table->unsignedBigInteger('water_meter_type_id');
             $table->timestamps();
         });
