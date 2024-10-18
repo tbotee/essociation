@@ -4,8 +4,12 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AssociationResource\Pages;
 use App\Models\Association;
+use App\Models\City;
+use Closure;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -38,12 +42,20 @@ class AssociationResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('city_id')
-                    ->relationship('city', 'name')
-                    ->required(),
+
                 Forms\Components\Select::make('region_id')
                     ->relationship('region', 'name')
-                    ->required(),
+                    ->required()
+                    ->reactive(),
+                Forms\Components\Select::make('city_id')
+                    ->relationship('city', 'name')
+                    ->required()
+                    ->options(function (Get $get) {
+                        if ($get('region_id') !== null) {
+                            return City::where('region_id', $get('region_id'))->pluck('name', 'id');
+                        }
+                        return [];
+                    })
             ]);
     }
 
