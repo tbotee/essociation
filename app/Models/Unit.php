@@ -32,4 +32,9 @@ class Unit extends Model
     {
         return $this->morphOne(WaterMeter::class, 'water_meter');
     }
+
+    public function costs(): HasMany
+    {
+        return $this->hasMany(UnitCost::class);
+    }
 }

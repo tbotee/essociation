@@ -49,6 +49,7 @@ class ManageResidences extends ManageRelatedRecords
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -84,27 +85,6 @@ class ManageResidences extends ManageRelatedRecords
                     ->numeric()
                     ->minValue(0)
                     ->default(0),
-
-//                Forms\Components\Radio::make('type')
-//                    ->options(
-//                        function (): array {
-//                            $return = [];
-//                            foreach (config('constants.associationCosts') as $index => $cost) {
-//                                $return[$cost] = __($index);
-//                            }
-//                            return $return;
-//                        }
-//                    )
-//                    ->required(),
-//                Forms\Components\Toggle::make('is_monthly')
-//                    ->onIcon('heroicon-o-arrow-path-rounded-square')
-//                    ->reactive(),
-//                Forms\Components\DatePicker::make('date')
-//                    ->format('d/m/Y')
-//                    ->visible(
-//                        fn (Get $get): bool => $get('is_monthly') === null || $get('is_monthly') === false
-//                    )
-//                    ->required(fn (Get $get): bool => $get('is_monthly') != null || $get('is_monthly') === false)
             ]);
     }
 }

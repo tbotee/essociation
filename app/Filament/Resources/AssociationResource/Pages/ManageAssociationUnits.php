@@ -27,7 +27,7 @@ class ManageAssociationUnits extends ManageRelatedRecords
 
     public static function getNavigationLabel(): string
     {
-        return 'Manage Units';
+        return 'Units';
     }
 
     public function form(Form $form): Form
