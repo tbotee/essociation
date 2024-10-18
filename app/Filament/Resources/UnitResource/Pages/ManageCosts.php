@@ -116,8 +116,6 @@ class ManageCosts extends ManageRelatedRecords
     }
 
     private function manageSave(array $data): array {
-        $association = $this->getRelationship()->getParent();
-        $data['association_id'] = $association->id;
         if (!empty($data['date'])) {
             $data['date'] = Carbon::createFromFormat('d/m/Y', $data['date']);
         }

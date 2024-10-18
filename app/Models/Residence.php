@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Residence extends Model
 {
@@ -18,5 +20,15 @@ class Residence extends Model
     public function unit(): BelongsTo
     {
         return $this->belongsTo(Unit::class);
+    }
+
+    public function waterMeters(): MorphMany
+    {
+        return $this->morphMany(WaterMeter::class, 'water_meter');
+    }
+
+    public function owners(): HasMany
+    {
+        return $this->hasMany(Owner::class);
     }
 }

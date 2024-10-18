@@ -44,7 +44,6 @@ class UnitResource extends Resource
                 Forms\Components\Fieldset::make('Water Meter')
                     ->relationship('waterMeter')
                     ->schema([
-                        Forms\Components\TextInput::make('code'),
                         Forms\Components\Select::make('water_meter_type_id')
                             ->options(
                                 WaterMeterType::where(
@@ -57,11 +56,13 @@ class UnitResource extends Resource
                                         return [$key => __($item)];
                                     })
                             ),
+                        Forms\Components\TextInput::make('code'),
                         Forms\Components\Placeholder::make('delete_button')
                             ->label('')
                             ->content(function () {
                                 return view('filament.components.delete-button');
                             }),
+
                     ]),
             ]);
     }

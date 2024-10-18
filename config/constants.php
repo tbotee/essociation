@@ -22,4 +22,8 @@ return [
         'associationMeter' => 'association-meter',
         'unitMeter' => 'unit-meter'
     ],
+    'ownerType' => [
+        'person' => 1,
+        'company' => 2
+    ]
 ];
