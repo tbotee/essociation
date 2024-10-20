@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AssociationUserInvitation extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'email',
         'association_id',

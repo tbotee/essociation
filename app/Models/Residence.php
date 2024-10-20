@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Residence extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'nr',
         'floor',
@@ -30,5 +33,10 @@ class Residence extends Model
     public function owners(): HasMany
     {
         return $this->hasMany(Owner::class);
+    }
+
+    public function residenceUsers(): HasMany
+    {
+        return $this->hasMany(ResidenceUser::class);
     }
 }

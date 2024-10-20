@@ -62,6 +62,7 @@ class ManageResidences extends ManageRelatedRecords
     public function form(Form $form): Form
     {
         return $form
+            ->columns(1)
             ->schema([
                 Forms\Components\Tabs::make('Tabs')
                     ->tabs([

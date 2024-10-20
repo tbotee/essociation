@@ -6,14 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class AssociationUser extends Model
+class ResidenceUser extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
         'user_id',
-        'association_id',
-        'role_id',
+        'residence_id',
     ];
 
     public function user(): BelongsTo

@@ -6,18 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class AssociationUser extends Model
+class ResidenceUserInvitation extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id',
-        'association_id',
-        'role_id',
+        'email',
+        'residence_id',
+        'unit_id',
+        'encrypted_data',
+        'status',
     ];
 
-    public function user(): BelongsTo
+    public function residence(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Residence::class);
     }
 }

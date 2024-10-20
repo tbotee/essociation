@@ -127,6 +127,8 @@ class UnitResource extends Resource
             'edit' => Pages\EditUnit::route('/{record}/edit'),
             'residences' => Pages\ManageResidences::route('/{record}/residences'),
             'costs' => Pages\ManageCosts::route('/{record}/costs'),
+            'users' => Pages\ViewResidenceUsers::route('/{record}/users'),
+            'invitations' => Pages\InviteResidenceUsers::route('/{record}/invitations'),
         ];
     }
 
@@ -135,7 +137,9 @@ class UnitResource extends Resource
         return $page->generateNavigationItems([
             Pages\EditUnit::class,
             Pages\ManageResidences::class,
-            Pages\ManageCosts::class
+            Pages\ManageCosts::class,
+            Pages\ViewResidenceUsers::class,
+            Pages\InviteResidenceUsers::class
         ]);
     }
 }
