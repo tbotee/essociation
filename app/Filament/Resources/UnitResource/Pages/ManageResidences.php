@@ -94,8 +94,9 @@ class ManageResidences extends ManageRelatedRecords
                             ]),
                         Forms\Components\Tabs\Tab::make('Water Meters')
                             ->schema([
-                                Forms\Components\Repeater::make(__('waterMeters'))
+                                Forms\Components\Repeater::make('waterMeters')
                                     ->relationship()
+                                    ->defaultItems(0)
                                     ->schema([
                                         Forms\Components\TextInput::make('code')
                                             ->required(),
@@ -113,8 +114,9 @@ class ManageResidences extends ManageRelatedRecords
                             ]),
                         Forms\Components\Tabs\Tab::make('Owners')
                             ->schema([
-                                Forms\Components\Repeater::make(__('owners'))
+                                Forms\Components\Repeater::make('owners')
                                     ->relationship()
+                                    ->defaultItems(0)
                                     ->schema([
                                         Forms\Components\Fieldset::make('Label')
                                             ->schema([
